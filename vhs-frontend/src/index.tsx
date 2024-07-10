@@ -5,7 +5,7 @@ import App from './App';
 import { PrimeReactProvider } from 'primereact/api';
 import 'primeicons/primeicons.css';
 import '/node_modules/primeflex/primeflex.css';
-import 'primereact/resources/themes/lara-light-blue/theme.css';
+import 'primereact/resources/themes/mira/theme.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

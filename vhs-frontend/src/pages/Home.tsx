@@ -16,7 +16,7 @@ export default function Home() {
     let tapes: TapeInfo[] = data;
 
     return (
-        <div className='flex flex-wrap max-w-80p mx-auto gap-5rem'>
+        <div className='flex flex-wrap max-w-80p mx-auto gap-6 justify-content-center'>
             {tapes.map((tape) => {
                 return (
                     <Tape {...tape} />

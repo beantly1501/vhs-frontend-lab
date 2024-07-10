@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const zTapeInfo = z.object({
+    id: z.number(),
     title: z.string(),
     description: z.string(),
     genre: z.string(),

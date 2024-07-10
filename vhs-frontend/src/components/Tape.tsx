@@ -1,13 +1,25 @@
 import { z } from 'zod';
+import { Card } from 'primereact/card';
+import { handleTapeClick } from '../helpers/helperFunctions';
+
 import { zTapeInfo } from '../types';
+import { Button } from 'primereact/button';
+
 
 type TapeInfo = z.infer<typeof zTapeInfo>;
 
 export default function Tape(tape: TapeInfo) {
+
+    const header = tape.thumbnail ? <img src={tape.thumbnail} alt={tape.title} /> : <img src="vhs.png" alt="vhs"/>
+    const footer = (
+        <Button label='View more info' icon="pi pi-check" style={{ margin: 'auto'}} onClick={() => handleTapeClick(tape)}/>
+    )
+
     return (
-        <div className='flex flex-column flex-wrap justify-center align-items m-5 border-round-md bg-white cursor-pointer' >
-            <img src="vhs.png" alt="vhs-template" className='w-10rem mx-auto' />
-            <p className='mx-auto px-3'>{tape.title}</p>
-        </div>
+        <Card title={tape.title} footer={footer} header={header} className='w-20rem'>
+            <p className=''>
+                {tape.title}
+            </p>
+        </Card>
     )
 }
