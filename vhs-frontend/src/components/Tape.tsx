@@ -1,9 +1,7 @@
-import { z } from 'zod';
-import { Card } from 'primereact/card';
 import { useNavigate } from 'react-router-dom';
+import { z } from 'zod';
 
 import { zTapeInfo } from '../types';
-import { Button } from 'primereact/button';
 
 
 type TapeInfo = z.infer<typeof zTapeInfo>;
