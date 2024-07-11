@@ -10,10 +10,12 @@ import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import Tape from '../components/Tape';
 import { zTapeInfo } from '../types';
+import { Button } from 'primereact/button';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
 
-    
+    const navigate = useNavigate();
     const [search, setSearch] = useState<string>();
 
     
@@ -44,10 +46,13 @@ export default function Home() {
 
     return (
         <div className='card max-w-90p mx-auto pb-5' style={{maxWidth: '90%', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-            <IconField iconPosition="left" style={{display: 'inline', margin: 'auto'}} className='py-5'>
-                <InputIcon className="pi pi-search"> </InputIcon>
-                <InputText v-model="value1" placeholder="Search" style={{width: '30vw', height: '5vh'}} value={search} onChange={(e) => setSearch(e.target.value)} autoFocus/>
-            </IconField>
+            <div className='flex gap-8 justify-content-center align-items-center'>
+                <IconField iconPosition="left" style={{display: 'inline'}} className='py-5'>
+                    <InputIcon className="pi pi-search"> </InputIcon>
+                    <InputText v-model="value1" placeholder="Search" style={{width: '30vw', height: '5vh'}} value={search} onChange={(e) => setSearch(e.target.value)} autoFocus/>
+                </IconField>
+                <Button icon="pi pi-plus" label='Create new' className='h-4rem' onClick={() => navigate(`/create`)} />
+            </div>
             <DataView value={tapes} itemTemplate={itemTemplate}/>
         </div>
     )

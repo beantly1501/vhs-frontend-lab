@@ -1,12 +1,5 @@
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
-import { z } from 'zod';
-
-import { zTapeInfo } from '../types';
-
-
-type TapeInfo = z.infer<typeof zTapeInfo>;
-
 
 // get all tapes
 export const getTapes = async (search: string | null) => {
