@@ -2,10 +2,10 @@ import { Card } from 'primereact/card';
 import { Divider } from 'primereact/divider';
 import { useNavigate, useParams } from 'react-router-dom';
 import { z } from 'zod';
+import { Button } from 'primereact/button';
 
 import { useGetTape } from '../helpers/queryFunctions';
 import { zTapeInfo } from '../types';
-import { Button } from 'primereact/button';
 
 export default function TapeInfoPage() {
 
@@ -71,7 +71,7 @@ export default function TapeInfoPage() {
                     <Card>
                         <div className='flex justify-content-between px-7'>
                             <Button icon='pi pi-arrow-left' label={"Return"} severity='secondary' onClick={() => navigate(-1)}/>
-                            <Button icon='pi pi-pencil' label={"Edit"} onClick={() => navigate(`/edit/${tape.id}`)}/>
+                            <Button icon='pi pi-pencil' label={"Edit"} onClick={() => navigate(`/edit/${tape.id}`, { state: tape})}/>
                             <Button icon='pi pi-trash' label={"Delete"} severity='danger'/>
                         </div>
                     </Card>
