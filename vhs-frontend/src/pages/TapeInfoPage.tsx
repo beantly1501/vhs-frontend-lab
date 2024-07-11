@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { z } from 'zod';
 import { Button } from 'primereact/button';
 
+import '../styles.scss'
 import { useGetTape } from '../helpers/queryFunctions';
 import { zTapeInfo } from '../types';
 import axios from 'axios';
@@ -26,9 +27,9 @@ export default function TapeInfoPage() {
     }
 
     return (
-        <div className='flex surface-50 p-5 gap-5 border-round-md' style={{maxWidth: '60%', margin: 'auto', marginTop: '10%'}}>
+        <div className='flex flex-column xl:flex-row surface-50 p-5 gap-5 border-round-md info-page' style={{maxWidth: '60%', margin: 'auto', marginTop: '10%'}}>
             <div className='flex flex-column gap-5'>
-                <Card className=''>
+                <Card className='flex justify-content-center'>
                     <img src="/vhs.png" alt="test" style={{width: '20rem'}} />  
                 </Card>
                 <Card>
@@ -75,10 +76,10 @@ export default function TapeInfoPage() {
                         <Divider className='surface-900' style={{height: '2px'}} />
                     </Card>
                     <Card>
-                        <div className='flex justify-content-between px-7'>
-                            <Button icon='pi pi-arrow-left' label={"Return"} severity='secondary' onClick={() => navigate(-1)}/>
-                            <Button icon='pi pi-pencil' label={"Edit"} onClick={() => navigate(`/edit/${tape.id}`, { state: tape})}/>
-                            <Button icon='pi pi-trash' label={"Delete"} severity='danger' onClick={() => handleDelete(tape.id)}/>
+                        <div className='flex flex-column justify-content-center px-7 gap-2 buttons-responsivity'>
+                            <Button icon='pi pi-arrow-left' className="w-8rem mx-auto" label={"Return"} severity='secondary' onClick={() => navigate(-1)}/>
+                            <Button icon='pi pi-pencil' className="w-8rem mx-auto" label={"Edit"} onClick={() => navigate(`/edit/${tape.id}`, { state: tape})}/>
+                            <Button icon='pi pi-trash' className="w-8rem mx-auto" label={"Delete"} severity='danger' onClick={() => handleDelete(tape.id)}/>
                         </div>
                     </Card>
                 </div>

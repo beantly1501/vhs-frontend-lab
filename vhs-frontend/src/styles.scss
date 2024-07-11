@@ -1,0 +1,20 @@
+@media (min-width: 1700px) {
+    .info-page {
+        .buttons-responsivity {
+            flex-direction: row !important;
+            justify-content: space-around;
+        }
+    }
+}
+@media (max-width: 1000px) {
+    .edit-page {
+        .block-responsivity {
+            flex-direction: column;
+        }
+    }
+    .create-page {
+        .block-responsivity {
+            flex-direction: column;
+        }
+    }
+}

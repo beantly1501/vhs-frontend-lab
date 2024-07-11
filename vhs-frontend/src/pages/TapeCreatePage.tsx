@@ -13,7 +13,7 @@ export default function TapeCreatePage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     return (
-        <div className='flex surface-50 p-5 gap-5 border-round-md' style={{maxWidth: '60%', margin: 'auto', marginTop: '10%'}}>
+        <div className='flex surface-50 p-5 gap-5 border-round-md create-page' style={{maxWidth: '60%', margin: 'auto', marginTop: '10%'}}>
             <form className='w-full' id="tapeForm" onSubmit={handleSubmit((value) => {
                 axios.post(`/api/vhs`, value);
                 navigate("/");
@@ -45,7 +45,7 @@ export default function TapeCreatePage() {
                         <p className='font-bold'>ReleaseYear:</p>
                         <InputText id="releaseYear" keyfilter="int" {...register("releasedAt", { required: true})} className={errors.releasedAt ? "w-full border-red-500" : "w-full"} />
                     </div>
-                    <div className='flex gap-5 justify-content-between'>
+                    <div className='flex gap-5 justify-content-between block-responsivity'>
                         <div className='flex flex-column gap-1 w-full'>
                             <p className='font-bold'>Quantity:</p>
                             <InputText id="quantity" keyfilter="int" {...register("quantity", { required: true})} className={errors.quantity ? "w-full border-red-500" : "w-full"} />
