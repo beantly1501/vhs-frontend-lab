@@ -38,7 +38,7 @@ export default function TapeEditPage() {
         <div className='flex surface-50 p-5 gap-5 border-round-md edit-page mb-5' style={{maxWidth: '60%', margin: 'auto', marginTop: '5%'}}>
             <form className='w-full' id="tapeForm" onSubmit={handleSubmit((value) => {
                 axios.post("/api/vhs", value);
-                navigate(-1);
+                navigate("/");
             })}>
                 <div className='flex flex-column gap-3 justify-content-center'>
                     <div className='flex gap-5 justify-content-between block-responsivity'>

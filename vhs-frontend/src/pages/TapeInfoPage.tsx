@@ -76,7 +76,12 @@ export default function TapeInfoPage() {
                         <Divider className='surface-900' style={{height: '2px'}} />
                     </Card>
                     <Card>
-                        <div className='flex flex-column justify-content-center px-7 gap-2 buttons-responsivity'>
+                        <div className='justify-content-center px-7 gap-2 buttons-responsivity small-buttons'>
+                            <Button icon='pi pi-arrow-left' className="w-4rem mx-auto" severity='secondary' onClick={() => navigate(-1)}/>
+                            <Button icon='pi pi-pencil' className="w-4rem mx-auto" onClick={() => navigate(`/edit/${tape.id}`, { state: tape})}/>
+                            <Button icon='pi pi-trash' className="w-4rem mx-auto" severity='danger' onClick={() => handleDelete(tape.id)}/>
+                        </div>
+                        <div className='justify-content-center px-7 gap-2 buttons-responsivity large-buttons'>
                             <Button icon='pi pi-arrow-left' className="w-8rem mx-auto" label={"Return"} severity='secondary' onClick={() => navigate(-1)}/>
                             <Button icon='pi pi-pencil' className="w-8rem mx-auto" label={"Edit"} onClick={() => navigate(`/edit/${tape.id}`, { state: tape})}/>
                             <Button icon='pi pi-trash' className="w-8rem mx-auto" label={"Delete"} severity='danger' onClick={() => handleDelete(tape.id)}/>
