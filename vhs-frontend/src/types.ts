@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { number, z } from "zod";
 
 export const zTapeInfo = z.object({
     id: z.number(),
@@ -8,7 +8,7 @@ export const zTapeInfo = z.object({
     duration: z.number(),
     releasedAt: z.number(),
     rentalPrice: z.number(),
-    rentalDuration: z.number(),
+    rentalDuration: z.custom<number | [number, number]>(),
     quantity: z.number(),
     thumbnail: z.string()
 })

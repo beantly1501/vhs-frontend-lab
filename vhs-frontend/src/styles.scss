@@ -6,10 +6,14 @@
         }
     }
 }
-@media (max-width: 1000px) {
+@media (max-width: 1300px) {
     .edit-page {
         .block-responsivity {
             flex-direction: column;
+
+            .responsive-width {
+                width: 100% !important
+            }
         }
     }
     .create-page {

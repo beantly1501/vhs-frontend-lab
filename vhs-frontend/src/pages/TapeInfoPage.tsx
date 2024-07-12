@@ -30,7 +30,7 @@ export default function TapeInfoPage() {
         <div className='flex flex-column xl:flex-row surface-50 p-5 gap-5 border-round-md info-page' style={{maxWidth: '60%', margin: 'auto', marginTop: '10%'}}>
             <div className='flex flex-column gap-5'>
                 <Card className='flex justify-content-center'>
-                    <img src="/vhs.png" alt="test" style={{width: '20rem'}} />  
+                    <img src={tape.thumbnail ? tape.thumbnail : "/vhs.png"} alt="test" style={{width: '20rem'}} />  
                 </Card>
                 <Card>
                     <div className='flex justify-content-between h-2rem'>
@@ -50,7 +50,7 @@ export default function TapeInfoPage() {
                     <Divider className='surface-900' style={{height: '2px'}} />
                 </Card>
             </div>
-            <div>
+            <div className='w-full'>
                 <div className='flex flex-column gap-5'>
                     <Card className=''>
                         <div className='flex flex-column'>
@@ -66,7 +66,7 @@ export default function TapeInfoPage() {
                         <Divider className='surface-900' style={{height: '2px'}} />
                         <div className='flex justify-content-between h-2rem'>
                             <p><strong>Rental duration:</strong></p>
-                            <p>{tape.rentalDuration} days</p>
+                            <p>{tape.rentalDuration} {tape.rentalDuration === 1 ? "day" : "days"}</p>
                         </div>
                         <Divider className='surface-900' style={{height: '2px'}} />
                         <div className='flex justify-content-between h-2rem'>

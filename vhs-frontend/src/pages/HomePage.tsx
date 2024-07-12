@@ -46,12 +46,12 @@ export default function Home() {
 
     return (
         <div className='card max-w-90p mx-auto pb-5' style={{maxWidth: '90%', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-            <div className='flex gap-8 justify-content-center align-items-center'>
+            <div className='flex gap-5 justify-content-center align-items-center'>
                 <IconField iconPosition="left" style={{display: 'inline'}} className='py-5'>
                     <InputIcon className="pi pi-search"> </InputIcon>
                     <InputText v-model="value1" placeholder="Search" style={{width: '30vw', height: '5vh'}} value={search} onChange={(e) => setSearch(e.target.value)} autoFocus/>
                 </IconField>
-                <Button icon="pi pi-plus" label='Create new' className='h-4rem' onClick={() => navigate(`/create`)} />
+                <Button icon="pi pi-plus" label='Create new' onClick={() => navigate(`/create`)} style={{height: '3.5rem'}}/>
             </div>
             <DataView value={tapes} itemTemplate={itemTemplate}/>
         </div>
