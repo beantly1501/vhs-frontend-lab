@@ -2,22 +2,20 @@ import { Button } from 'primereact/button';
 import { FileUpload } from 'primereact/fileupload';
 import { InputText } from 'primereact/inputtext';
 import { useForm } from 'react-hook-form';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { z } from 'zod';
+import { useNavigate } from 'react-router-dom';
 
+import axios from 'axios';
 import { Slider, SliderChangeEvent } from 'primereact/slider';
 import { useEffect, useState } from 'react';
-import { zTapeInfo } from '../types';
-import axios from 'axios';
+import { InputNumber, InputNumberChangeEvent } from 'primereact/inputnumber';
 
 export default function TapeEditPage() {
     
     const navigate = useNavigate();
     
-    type TapeInfo = z.infer<typeof zTapeInfo>;
-
     const [photo, setPhoto] = useState<string>();
     const [rentalDuration, setRentalDuration] = useState<number | [number, number]>(1);
+    const [quantity, setQuantity] = useState<number | null>(1);
     const { register, handleSubmit, formState: { errors }, setValue} = useForm();
     const handleUpload = (e: any) => {
         setValue("thumbnail", e.files[0].objectURL);
@@ -28,10 +26,21 @@ export default function TapeEditPage() {
         setRentalDuration(e);
         setValue("rentalDuration", e);
     }
+    const handleQuantity = (e: number | null) => {
+        if (e === null) {
+            setQuantity(0);
+            setValue("quantity", 0);
+        }
+        else {
+            setQuantity(e);
+            setValue("quantity", e);
+        }
+    }
 
     useEffect(() => {
         register("thumbnail");
-        register("rentalDuration");
+        register("rentalDuration", {value: 1});
+        register("quantity", { value: 1})
     }, [register])
 
     return (
@@ -74,7 +83,7 @@ export default function TapeEditPage() {
                     <div className='flex gap-5 justify-content-between block-responsivity'>
                         <div className='flex flex-column gap-1 w-full'>
                             <p className='font-bold'>Quantity:</p>
-                            <InputText id="quantity" keyfilter="int" {...register("quantity", { required: true})} className={errors.quantity ? "w-full border-red-500" : "w-full"} />
+                            <InputNumber min={0} value={quantity} showButtons buttonLayout='horizontal' id="quantity" onChange={(e: InputNumberChangeEvent) => handleQuantity(e.value)} className={errors.quantity ? "w-full border-red-500" : "w-full"} />
                         </div>
                         <div className='flex flex-column gap-1 w-full'>
                             <p className='font-bold'>Rental Price:</p>
@@ -82,7 +91,6 @@ export default function TapeEditPage() {
                         </div>
                         <div className='flex flex-column gap-1 w-full'>
                             <p className=''><strong>Rental Duration:</strong> {rentalDuration} {rentalDuration === 1 ? "day" : "days"}</p>
-                            {/* <InputText id="rentalDuration" keyfilter="int" {...register("rentalDuration", { required: true})} className={errors.rentalDuration ? "w-full border-red-500" : "w-full"} /> */}
                             <Slider value={rentalDuration} onChange={(e: SliderChangeEvent) => handleRentalDuration(e.value)} className='my-auto' min={1} max={10} />
                         </div>
                     </div>
