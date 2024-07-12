@@ -19,7 +19,7 @@ import { Chip } from 'primereact/chip';
 export default function Home() {
 
     const navigate = useNavigate();
-    const [search, setSearch] = useState<string>();
+    const [search, setSearch] = useState<string>("");
     const [isAvailable, setIsAvailable] = useState<boolean>(true);
 
     
